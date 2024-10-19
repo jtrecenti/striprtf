@@ -52,6 +52,7 @@ read_rtf <- function(file, verbose = FALSE,
   }
 
   readLines(file, warn = FALSE, ...) %>%
+    stringr::str_replace_all("\\\\'e7", "c") %>% 
     paste0(collapse = "\n") %>%
     strip_rtf(verbose, row_start, row_end, cell_end, ignore_tables)
 }
